@@ -10,6 +10,7 @@ class App extends React.Component {
   state = {
     current: {},
     location: {},
+    forecast: {},
     isLoarding: false
   };
   getWeather = async e => {
@@ -20,10 +21,15 @@ class App extends React.Component {
     try {
       const response = await axios(`https://api.apixu.com/v1/current.json?key=a5566985f1b740e0aec84050192102&q=${city},${country}
     `);
+      const future = await axios(
+        `https://api.apixu.com/v1/forecast.json?key=a5566985f1b740e0aec84050192102&q=${city},${country}`
+      );
 
       console.log(response);
+      console.log(future);
       this.setState({
         ...response.data,
+        ...future.data,
         isLoarding: false
       });
     } catch (error) {
@@ -49,6 +55,8 @@ class App extends React.Component {
                     city={this.state.location.name}
                     country={this.state.location.country}
                     humidity={this.state.current.humidity}
+                    condition={this.state.current.condition}
+                    forecast={this.state.forecast.forecastday}
                     // condition={this.state.current.condition}
                   />
                 </div>

@@ -15,9 +15,9 @@ const Weather = props => {
       <p className="weather__key">
         Humidity: <span className="weather__value">{props.humidity}</span>
       </p>
-      {/* <p className="weather__key">
-        Conditions: <span className="weather__value">{props.condition}</span>
-      </p> */}
+      <p className="weather__key">
+        Forecast: <span className="weather__value">{props.forecast}</span>
+      </p>
       <p className="weather__error">{props.error}</p>
     </div>
   );
