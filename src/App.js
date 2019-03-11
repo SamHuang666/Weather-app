@@ -10,7 +10,8 @@ class App extends React.Component {
   state = {
     current: {},
     location: {},
-    forecast: {},
+    // condition: {},
+    // forecast: {},
     isLoarding: false
   };
   getWeather = async e => {
@@ -28,6 +29,10 @@ class App extends React.Component {
       console.log(response);
       console.log(future);
       this.setState({
+        // current: response.data.current,
+        // loaction: response.data.location,
+        // condition: response.data.condition,
+        // focarecast: future.data.focarecast,
         ...response.data,
         ...future.data,
         isLoarding: false
@@ -55,8 +60,11 @@ class App extends React.Component {
                     city={this.state.location.name}
                     country={this.state.location.country}
                     humidity={this.state.current.humidity}
-                    condition={this.state.current.condition}
-                    forecast={this.state.forecast.forecastday}
+                    region={this.state.location.region}
+                    localtime={this.state.location.localtime}
+                    windVelocity={this.state.current.wind_kph}
+                    // condition={this.state.condition.toString()}
+                    // forecast={this.state.forecast.forecastday}
                     // condition={this.state.current.condition}
                   />
                 </div>
